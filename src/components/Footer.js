@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="section-p1">
       <div className="footer-container">
         <div className="col">
-          <img src="/images/AFS.jpeg" className="logo" alt="Housenama" />
+          <img src="/images/afs1.jpeg" className="logo" alt="Housenama" />
           <h4>Contact</h4>
           
           {/* Workshop Address - Only Address Now */}

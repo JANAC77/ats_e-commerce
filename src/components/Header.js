@@ -104,7 +104,7 @@ const Header = () => {
   return (
     <section id="header">
       <Link to="/" onClick={closeMenu}>
-        <img src="/images/AFS.jpeg" className="logo" alt="AFS" />
+        <img src="/images/afs1.jpeg" className="logo" alt="AFS" />
       </Link>
 
       <div className="mobile-menu-btn" onClick={toggleMenu}>

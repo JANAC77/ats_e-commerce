@@ -13,11 +13,11 @@
   border-bottom: 1px solid #333;
 }
 
-/* Logo */
+/* Logo - INCREASED SIZE */
 .logo {
-  height: 200px;
+  height: 240px;  /* Increased from 200px */
   width: auto;
-  max-width: 550px;
+  max-width: 650px;  /* Increased from 550px */
   object-fit: contain;
   background: white;
   padding: 2px 6px;
@@ -178,14 +178,14 @@
   cursor: pointer;
 }
 
-/* ========== MOBILE RESPONSIVE FIXES ========== */
+/* ========== MOBILE RESPONSIVE FIXES - INCREASED LOGO SIZES ========== */
 @media (max-width: 1200px) {
   #header {
     padding: 5px 60px 5px 0px;
   }
   .logo {
-    height: 180px;
-    max-width: 500px;
+    height: 210px;  /* Increased from 180px */
+    max-width: 580px;  /* Increased from 500px */
   }
   #navbar {
     gap: 20px;
@@ -200,8 +200,8 @@
     padding: 5px 40px 5px 0px;
   }
   .logo {
-    height: 160px;
-    max-width: 450px;
+    height: 190px;  /* Increased from 160px */
+    max-width: 520px;  /* Increased from 450px */
   }
   #navbar {
     gap: 15px;
@@ -213,8 +213,8 @@
 
 @media (max-width: 899px) {
   .logo {
-    height: 150px;
-    max-width: 400px;
+    height: 170px;  /* Increased from 150px */
+    max-width: 460px;  /* Increased from 400px */
   }
   #navbar {
     gap: 12px;
@@ -227,8 +227,8 @@
   }
   
   .logo {
-    height: 140px;
-    max-width: 380px;
+    height: 160px;  /* Increased from 140px */
+    max-width: 420px;  /* Increased from 380px */
   }
   
   .mobile-menu-btn {
@@ -304,8 +304,8 @@
 
 @media (max-width: 577px) {
   .logo {
-    height: 130px;
-    max-width: 340px;
+    height: 150px;  /* Increased from 130px */
+    max-width: 390px;  /* Increased from 340px */
   }
 }
 
@@ -315,8 +315,8 @@
   }
   
   .logo {
-    height: 120px;
-    max-width: 300px;
+    height: 140px;  /* Increased from 120px */
+    max-width: 350px;  /* Increased from 300px */
     padding: 2px 4px;
   }
   
@@ -338,8 +338,8 @@
 
 @media (max-width: 375px) {
   .logo {
-    height: 100px;
-    max-width: 260px;
+    height: 120px;  /* Increased from 100px */
+    max-width: 300px;  /* Increased from 260px */
   }
   
   #navbar {
