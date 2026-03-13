@@ -59,25 +59,11 @@ const Login = () => {
       <div className="auth-box">
         <h1 className="auth-title">Sign In</h1>
         <p className="auth-subtitle">Welcome back! Please enter your details.</p>
-
-        {/* Social Buttons */}
-        <div className="social-buttons">
-          <button className="social-btn">
-            <FaGoogle className="social-icon google" />
-            Google
-          </button>
-        </div>
-
-        <div className="divider">
-          <span>Or continue with email</span>
-        </div>
-
         <form onSubmit={handleSubmit}>
           {/* Email Field */}
           <div className="form-group">
             <label>Email</label>
             <div className="input-wrapper">
-              <FaEnvelope className="input-icon" />
               <input
                 type="email"
                 name="email"
@@ -92,7 +78,6 @@ const Login = () => {
           <div className="form-group">
             <label>Password</label>
             <div className="input-wrapper">
-              <FaLock className="input-icon" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"

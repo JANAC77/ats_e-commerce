@@ -31,41 +31,6 @@
   margin-bottom: 30px;
 }
 
-/* Social Buttons */
-.social-buttons {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.social-btn {
-  flex: 1;
-  height: 48px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1e293b;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.social-btn:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.social-icon.google { color: #ea4335; }
-.social-icon.facebook { color: #1877f2; }
-.social-icon.apple { color: #000; }
-
 /* Divider */
 .divider {
   position: relative;

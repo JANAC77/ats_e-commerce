@@ -98,26 +98,11 @@ const Register = () => {
     <div className="auth-page">
       <div className="auth-box">
         <h1 className="auth-title">Create Account</h1>
-        <p className="auth-subtitle">Join 150,000+ happy customers</p>
-
-        {/* Social Buttons */}
-        <div className="social-buttons">
-          <button className="social-btn">
-            <FaGoogle className="social-icon google" />
-            Google
-          </button>
-        </div>
-
-        <div className="divider">
-          <span>Or sign up with email</span>
-        </div>
-
         <form onSubmit={handleSubmit}>
           {/* Name Field */}
           <div className="form-group">
             <label>Full Name</label>
             <div className="input-wrapper">
-              <FaUser className="input-icon" />
               <input
                 type="text"
                 name="name"
@@ -132,7 +117,6 @@ const Register = () => {
           <div className="form-group">
             <label>Email</label>
             <div className="input-wrapper">
-              <FaEnvelope className="input-icon" />
               <input
                 type="email"
                 name="email"
@@ -147,7 +131,6 @@ const Register = () => {
           <div className="form-group">
             <label>Password</label>
             <div className="input-wrapper">
-              <FaLock className="input-icon" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
@@ -169,7 +152,6 @@ const Register = () => {
           <div className="form-group">
             <label>Confirm Password</label>
             <div className="input-wrapper">
-              <FaLock className="input-icon" />
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
                 name="confirmPassword"

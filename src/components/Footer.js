@@ -63,27 +63,12 @@ const Footer = () => {
             <button onClick={() => openSocial('https://instagram.com/housenama')} aria-label="Instagram">
               <FaInstagram />
             </button>
-            <button onClick={() => openSocial('https://twitter.com/housenama')} aria-label="Twitter">
-              <FaTwitter />
-            </button>
             <button onClick={() => openSocial('https://youtube.com/housenama')} aria-label="YouTube">
               <FaYoutube />
             </button>
-            <button onClick={() => openSocial('https://pinterest.com/housenama')} aria-label="Pinterest">
-              <FaPinterestP />
-            </button>
+           
           </div>
 
-          <h4>Subscribe to our emails</h4>
-          <div className="subscribe-form">
-            <input type="email" placeholder="Your email address" />
-            <button className="btn-primary">Subscribe</button>
-          </div>
-
-          {/* Workshop Badge */}
-          <div className="workshop-badge">
-            <span>🏭 Crafted at HSR Layout, Bengaluru</span>
-          </div>
         </div>
       </div>
 
