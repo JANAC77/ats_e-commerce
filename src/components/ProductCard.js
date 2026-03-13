@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const [isWishlist, setIsWishlist] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     setIsWishlist(isInWishlist(product.id));
@@ -69,8 +69,8 @@ const ProductCard = ({ product }) => {
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
       onClick={handleClick}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    //  onHoverStart={() => setIsHovered(true)}
+    //  onHoverEnd={() => setIsHovered(false)}
     >
       {product.popular && <span className="popular-badge">Popular</span>}
       

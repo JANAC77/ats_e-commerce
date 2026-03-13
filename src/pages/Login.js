@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {useFirebase} from '../context/FirebaseContext'
 import { 
-  FaEnvelope, 
-  FaLock, 
   FaEye, 
   FaEyeSlash,
-  FaGoogle,
-  FaFacebookF,
-  FaApple,
   FaArrowRight
 } from 'react-icons/fa';
 import toast from 'react-hot-toast';

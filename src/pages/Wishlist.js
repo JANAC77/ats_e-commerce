@@ -8,7 +8,6 @@ import {
   FaTrash, 
   FaArrowLeft,
   FaShare,
-  FaEye,
   FaTimes,
   FaBolt,
   FaGift

@@ -8,12 +8,10 @@ import {
   FaClock, 
   FaTimesCircle,
   FaEye,
-  FaDownload,
   FaSearch,
   FaFilter,
   FaEnvelope,
   FaPhone,
-  FaArrowLeft
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
@@ -24,8 +22,6 @@ const MyOrders = () => {
   const { 
     searchedOrders, 
     searchOrders, 
-    getOrdersByEmail, 
-    getOrdersByPhone,
     clearSearch,
     cancelOrder,
     trackOrder 
