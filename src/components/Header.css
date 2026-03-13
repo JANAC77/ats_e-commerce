@@ -48,7 +48,7 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  color: #ffffff;  /* Always white */
+  color: #ffffff;
   transition: color 0.3s;
   padding: 10px 0;
   white-space: nowrap;
@@ -59,13 +59,13 @@
   color: #088178;
 }
 
-/* ========== ACCOUNT BUTTON - FIXED ========== */
+/* ========== ACCOUNT BUTTON - BLACK TEXT ========== */
 .account-btn {
   background: none;
   border: none;
   font-size: 18px;
   font-weight: 500;
-  color: black;  /* Always white - FIXED */
+  color: #000000;  /* BLACK text */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -73,8 +73,6 @@
   padding: 10px 0;
   position: relative;
   white-space: nowrap;
-  opacity: 1;  /* Always visible */
-  visibility: visible;  /* Always visible */
 }
 
 .account-btn:hover {
@@ -87,21 +85,13 @@
   font-size: 18px;
 }
 
-/* Account text - FORCE VISIBLE */
+/* Account text - BLACK */
 .account-text {
-  color: #ffffff;  /* Pure white */
+  color: #000000;  /* Pure black */
   font-weight: 500;
-  opacity: 1;
-  visibility: visible;
-  display: inline-block;  /* Ensure it's displayed */
 }
 
-/* Remove any hover-only effects */
-.account-btn:not(:hover) .account-text {
-  color: #ffffff;  /* Still white when not hovered */
-}
-
-/* Underline effect (optional) */
+/* Underline effect */
 .account-btn::after {
   content: '';
   position: absolute;
@@ -180,7 +170,7 @@
   border: 2px solid #000;
 }
 
-/* Mobile Menu */
+/* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
   font-size: 28px;
@@ -188,41 +178,172 @@
   cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 1300px) {
-  .logo { height: 180px; max-width: 500px; }
-  #navbar { gap: 20px; }
+/* ========== MOBILE RESPONSIVE FIXES ========== */
+@media (max-width: 1200px) {
+  #header {
+    padding: 5px 60px 5px 0px;
+  }
+  .logo {
+    height: 180px;
+    max-width: 500px;
+  }
+  #navbar {
+    gap: 20px;
+  }
+  #navbar li a, .account-btn {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 1024px) {
-  #header { padding: 5px 40px 5px 0px; }
-  .logo { height: 160px; max-width: 450px; }
-  #navbar { gap: 15px; }
+  #header {
+    padding: 5px 40px 5px 0px;
+  }
+  .logo {
+    height: 160px;
+    max-width: 450px;
+  }
+  #navbar {
+    gap: 15px;
+  }
+  #navbar li a, .account-btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 899px) {
+  .logo {
+    height: 150px;
+    max-width: 400px;
+  }
+  #navbar {
+    gap: 12px;
+  }
 }
 
 @media (max-width: 799px) {
-  #header { padding: 5px 20px 5px 0px; }
-  .logo { height: 140px; max-width: 380px; }
+  #header {
+    padding: 5px 20px 5px 0px;
+  }
   
-  .mobile-menu-btn { display: block; }
+  .logo {
+    height: 140px;
+    max-width: 380px;
+  }
   
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  /* Mobile Menu Styles */
   #navbar {
     position: fixed;
     top: 0;
     right: -320px;
-    width: 300px;
+    width: 280px;
     height: 100vh;
-    background: #111;
+    background: #111111;
     flex-direction: column;
     padding: 100px 25px;
-    transition: right 0.3s;
+    gap: 25px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
   }
   
-  #navbar.active { right: 0; }
+  #navbar.active {
+    right: 0;
+  }
   
-  #navbar li a,
+  #navbar li {
+    width: 100%;
+  }
+  
+  #navbar li a {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  /* Account button in mobile */
   .account-btn {
     width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #000000;  /* Black in mobile too */
+    justify-content: flex-start;
+    background: white;  /* White background for visibility */
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 5px 0;
+  }
+  
+  .account-text {
+    color: #000000;  /* Black text */
+  }
+  
+  .dropdown-container {
+    width: 100%;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: none;
+    border: 1px solid #333;
+  }
+  
+  .cart-icon {
+    padding: 15px 0;
     color: #ffffff;
+  }
+}
+
+@media (max-width: 577px) {
+  .logo {
+    height: 130px;
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 477px) {
+  #header {
+    padding: 5px 15px 5px 0px;
+  }
+  
+  .logo {
+    height: 120px;
+    max-width: 300px;
+    padding: 2px 4px;
+  }
+  
+  #navbar {
+    width: 260px;
+    right: -260px;
+    padding: 90px 20px;
+  }
+  
+  #navbar li a {
+    font-size: 17px;
+  }
+  
+  .account-btn {
+    font-size: 17px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .logo {
+    height: 100px;
+    max-width: 260px;
+  }
+  
+  #navbar {
+    width: 240px;
+    right: -240px;
   }
 }

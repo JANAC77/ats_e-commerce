@@ -16,16 +16,16 @@ footer {
   gap: 30px;
 }
 
-/* AFS Logo in Footer - BIG Image, SMALL Box */
+/* AFS Logo in Footer */
 footer .logo {
-  width: 220px;  /* Big image */
+  width: 220px;
   height: auto;
   max-height: 100px;
   object-fit: contain;
   margin-bottom: 25px;
   background: white;
-  padding: 5px 8px;  /* REDUCED padding - box சின்னதாக */
-  border-radius: 4px;  /* Smaller radius */
+  padding: 5px 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid #e0e0e0;
   transition: transform 0.3s ease;
@@ -33,14 +33,7 @@ footer .logo {
 
 footer .logo:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(8, 129, 120, 0.3);
   border-color: #088178;
-}
-
-/* First column - Contact info */
-footer .col:first-child {
-  display: flex;
-  flex-direction: column;
 }
 
 footer h4 {
@@ -60,7 +53,6 @@ footer h4::after {
   width: 50px;
   height: 3px;
   background: #088178;
-  border-radius: 2px;
 }
 
 footer p, footer a {
@@ -70,12 +62,10 @@ footer p, footer a {
   text-decoration: none;
   margin-bottom: 12px;
   display: block;
-  transition: all 0.3s ease;
 }
 
 footer a:hover {
   color: #088178;
-  transform: translateX(8px);
 }
 
 /* Social Icons */
@@ -83,6 +73,7 @@ footer a:hover {
   display: flex;
   gap: 15px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .social-icons button {
@@ -94,7 +85,6 @@ footer a:hover {
   color: #fff;
   font-size: 18px;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,9 +92,6 @@ footer a:hover {
 
 .social-icons button:hover {
   background: #088178;
-  border-color: #088178;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(8, 129, 120, 0.3);
 }
 
 /* Subscribe Form */
@@ -125,8 +112,8 @@ footer a:hover {
 }
 
 .subscribe-form input:focus {
-  outline: none;
   border-color: #088178;
+  outline: none;
 }
 
 .subscribe-form button {
@@ -138,12 +125,11 @@ footer a:hover {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .subscribe-form button:hover {
   background: #066a62;
-  transform: translateY(-2px);
 }
 
 /* Workshop Badge */
@@ -181,24 +167,97 @@ footer a:hover {
   margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* ========== SIMPLE MOBILE RESPONSIVE ========== */
+
+/* Tablet (1024px to 800px) */
+@media (max-width: 1024px) and (min-width: 800px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  
   footer .logo {
     width: 200px;
-    padding: 4px 6px;
   }
 }
 
+/* Mobile (799px and below) */
 @media (max-width: 799px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px;
+  }
+  
   footer .logo {
     width: 180px;
-    padding: 4px 6px;
+  }
+  
+  .social-icons button {
+    width: 38px;
+    height: 38px;
   }
 }
 
-@media (max-width: 477px) {
+/* Small Mobile (577px and below) */
+@media (max-width: 577px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* 1 column */
+    text-align: center;
+  }
+  
   footer .logo {
     width: 160px;
-    padding: 3px 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  footer h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .subscribe-form {
+    flex-direction: column;
+  }
+  
+  .subscribe-form button {
+    width: 100%;
+  }
+}
+
+/* Very Small Mobile (375px and below) */
+@media (max-width: 375px) {
+  footer {
+    padding: 40px 0 15px;
+  }
+  
+  footer .logo {
+    width: 140px;
+  }
+  
+  footer h4 {
+    font-size: 16px;
+  }
+  
+  footer p, footer a {
+    font-size: 12px;
+  }
+  
+  .social-icons button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .workshop-badge span {
+    font-size: 11px;
+  }
+  
+  .copyright p {
+    font-size: 11px;
   }
 }
