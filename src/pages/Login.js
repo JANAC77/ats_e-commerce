@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {useFirebase} from '../context/FirebaseContext'
 import { 
   FaEnvelope, 
   FaLock, 
@@ -15,6 +16,7 @@ import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
+  const {login}= useFirebase()
   
   const [formData, setFormData] = useState({
     email: '',
@@ -44,11 +46,9 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success('Login successful!');
+      await login(formData.email, formData.password);
       navigate('/');
     } catch (error) {
-      toast.error('Login failed');
     } finally {
       setIsLoading(false);
     }

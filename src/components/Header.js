@@ -14,20 +14,26 @@ import {
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useFirebase } from '../context/FirebaseContext';
 import toast from 'react-hot-toast';
 import './Header.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const { getCartCount } = useCart();
   const { getWishlistCount } = useWishlist();
+  
+  // Firebase hooks
+  const { user, logout } = useFirebase();
 
   const cartCount = getCartCount();
   const wishlistCount = getWishlistCount();
+  
+  // Check if user is logged in from Firebase
+  const isLoggedIn = !!user;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,11 +66,39 @@ const Header = () => {
     navigate(path);
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setDropdownOpen(false);
-    toast.success('Logged out successfully');
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setDropdownOpen(false);
+      toast.success('Logged out successfully', {
+        icon: '👋',
+        style: {
+          background: '#088178',
+          color: '#fff',
+        }
+      });
+      navigate('/');
+    } catch (error) {
+      // Error handled in Firebase context
+    }
+  };
+
+  const handleOrders = () => {
+    if (!isLoggedIn) {
+      toast.error('Please login to view your orders');
+      handleNavigation('/login');
+    } else {
+      handleNavigation('/orders');
+    }
+  };
+
+  const handleWishlist = () => {
+    if (!isLoggedIn) {
+      toast.error('Please login to view your wishlist');
+      handleNavigation('/login');
+    } else {
+      handleNavigation('/wishlist');
+    }
   };
 
   return (
@@ -113,6 +147,7 @@ const Header = () => {
                 transition={{ duration: 0.2 }}
               >
                 {!isLoggedIn ? (
+                  // Guest menu
                   <>
                     <div className="dropdown-item" onClick={() => handleNavigation('/login')}>
                       <FaSignInAlt className="dropdown-icon" />
@@ -126,12 +161,12 @@ const Header = () => {
                     
                     <div className="dropdown-divider"></div>
                     
-                    <div className="dropdown-item" onClick={() => handleNavigation('/orders')}>
+                    <div className="dropdown-item" onClick={handleOrders}>
                       <FaClipboardList className="dropdown-icon" />
                       <span>My Orders</span>
                     </div>
 
-                    <div className="dropdown-item" onClick={() => handleNavigation('/wishlist')}>
+                    <div className="dropdown-item" onClick={handleWishlist}>
                       <FaHeart className="dropdown-icon" />
                       <span>Wishlist</span>
                       {wishlistCount > 0 && (
@@ -140,13 +175,14 @@ const Header = () => {
                     </div>
                   </>
                 ) : (
+                  // Logged in user menu
                   <>
-                    <div className="dropdown-item" onClick={() => handleNavigation('/orders')}>
+                    <div className="dropdown-item" onClick={handleOrders}>
                       <FaClipboardList className="dropdown-icon" />
                       <span>My Orders</span>
                     </div>
                     
-                    <div className="dropdown-item" onClick={() => handleNavigation('/wishlist')}>
+                    <div className="dropdown-item" onClick={handleWishlist}>
                       <FaHeart className="dropdown-icon" />
                       <span>Wishlist</span>
                       {wishlistCount > 0 && (
@@ -165,7 +201,7 @@ const Header = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </li>
+        </li> 
 
         {/* Cart Icon */}
         <li>

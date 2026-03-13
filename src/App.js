@@ -5,6 +5,7 @@ import { CartProvider } from './context/CartContext';
 import { OrderProvider } from './context/OrderContext';
 import { ReviewProvider } from './context/ReviewContext';
 import { WishlistProvider } from './context/WishlistContext'; // Add this
+import { FirebaseProvider } from './context/FirebaseContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -25,6 +26,7 @@ import './App.css';
 
 function App() {
   return (
+    <FirebaseProvider>
     <CartProvider>
       <OrderProvider>
         <ReviewProvider>
@@ -63,6 +65,7 @@ function App() {
         </ReviewProvider>
       </OrderProvider>
     </CartProvider>
+    </FirebaseProvider>
   );
 }
 

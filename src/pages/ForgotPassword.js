@@ -6,13 +6,16 @@ import {
   FaCheckCircle,
   FaArrowRight
 } from 'react-icons/fa';
+import {useFirebase} from '../context/FirebaseContext'
 import toast from 'react-hot-toast';
 import './Login.css'; // Using same CSS as Login
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const {resetPassword} = useFirebase()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,11 +33,10 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await resetPassword(email);
       setIsSubmitted(true);
-      toast.success('Reset link sent!');
+      
     } catch (error) {
-      toast.error('Something went wrong');
     } finally {
       setIsLoading(false);
     }

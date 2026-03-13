@@ -13,10 +13,12 @@ import {
   FaCheckCircle
 } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import {useFirebase} from '../context/FirebaseContext'
 import './Login.css'; // Using same CSS as Login
 
 const Register = () => {
   const navigate = useNavigate();
+  const {register} = useFirebase()
   
   const [formData, setFormData] = useState({
     name: '',
@@ -78,13 +80,15 @@ const Register = () => {
     setIsLoading(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success('Account created successfully!');
-      setTimeout(() => {
-        navigate('/login');
-      }, 2000);
+      await register(formData.email, formData.password, {
+        name: formData.name,
+        email: formData.email
+      });
+      navigate('/login');
+
+      
     } catch (error) {
-      toast.error('Registration failed');
+
     } finally {
       setIsLoading(false);
     }
@@ -101,14 +105,6 @@ const Register = () => {
           <button className="social-btn">
             <FaGoogle className="social-icon google" />
             Google
-          </button>
-          <button className="social-btn">
-            <FaFacebookF className="social-icon facebook" />
-            Facebook
-          </button>
-          <button className="social-btn">
-            <FaApple className="social-icon apple" />
-            Apple
           </button>
         </div>
 
