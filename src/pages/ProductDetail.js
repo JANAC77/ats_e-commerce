@@ -25,7 +25,8 @@ import {
   FaTimes
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getProductById, getRelatedProducts } from '../data/products';
+import { getRelatedProducts } from '../data/products';
+import { getProductById } from '../services/productService';
 import ProductCard from '../components/ProductCard';
 import toast from 'react-hot-toast';
 import './ProductDetail.css';

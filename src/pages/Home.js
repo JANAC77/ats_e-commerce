@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import FeatureCard from '../components/FeatureCard';
 import ProductCard from '../components/ProductCard';
 import ReviewCard from '../components/ReviewCard';
 import { FaTruck, FaPalette, FaHeart, FaRuler, FaShieldAlt, FaClock } from 'react-icons/fa';
-import { products } from '../data/products';
+import { subscribeToProducts } from '../services/productService';  // 🔥 Real-time import
+import LoadingSpinner from '../components/LoadingSpinner';
 import './Home.css';
 
 const Home = () => {
+  const [bestSellers, setBestSellers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 🔥 Set up real-time listener for products
+    const unsubscribe = subscribeToProducts((products) => {
+      // Filter popular products
+      const popular = products.filter(p => p.popular).slice(0, 8);
+      setBestSellers(popular);
+      setLoading(false);
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
+
   const features = [
     { icon: <FaTruck />, title: "Free Shipping", description: "Free delivery across India" },
     { icon: <FaPalette />, title: "Unique Designs", description: "Exclusive designer collections" },
@@ -17,11 +34,6 @@ const Home = () => {
     { icon: <FaClock />, title: "13+ Years", description: "150,000+ nameplates delivered" }
   ];
 
-  // Get best sellers (popular products)
-  const bestSellers = products
-    .filter(product => product.popular)
-    .slice(0, 8);
-
   const reviews = [
     { name: "Irfan", product: "Teddy on the Moon", rating: 5, text: "Very good" },
     { name: "Parul", product: "Futura Gold SS", rating: 5, text: "Very good" },
@@ -29,6 +41,8 @@ const Home = () => {
     { name: "Harsha", product: "Excelus Principal", rating: 5, text: "Excellent quality" },
     { name: "Abhidnya", product: "Khurana Cutout", rating: 5, text: "Such nice one" }
   ];
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <>

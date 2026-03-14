@@ -1,29 +1,52 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
-import { getProductsByCategory } from '../data/products';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';  // 🔥 Real-time
+import { db } from '../firebase/config';
+import LoadingSpinner from '../components/LoadingSpinner';
 import './CategoryPage.css';
 
 const DeskNamePlates = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState('popular');
-  
-  const products = useMemo(() => {
-    return getProductsByCategory('desk-nameplates');
+
+  useEffect(() => {
+    // 🔥 Real-time listener for desk-nameplates category
+    const productsQuery = query(
+      collection(db, 'products'),
+      where('category', '==', 'desk-nameplates')
+    );
+
+    const unsubscribe = onSnapshot(productsQuery, (snapshot) => {
+      const productsList = [];
+      snapshot.forEach((doc) => {
+        productsList.push({ id: doc.id, ...doc.data() });
+      });
+      setProducts(productsList);
+      setLoading(false);
+    }, (error) => {
+      console.error('Error fetching products:', error);
+      setProducts([]);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const sortedProducts = useMemo(() => {
-    let sorted = [...products];
-    
+  const sortedProducts = [...(products || [])].sort((a, b) => {
     switch(sortBy) {
       case 'price-low':
-        return sorted.sort((a, b) => a.price - b.price);
+        return (a.price || 0) - (b.price || 0);
       case 'price-high':
-        return sorted.sort((a, b) => b.price - a.price);
+        return (b.price || 0) - (a.price || 0);
       case 'name':
-        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+        return (a.name || '').localeCompare(b.name || '');
       default:
-        return sorted.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
+        return (b.popular ? 1 : 0) - (a.popular ? 1 : 0);
     }
-  }, [products, sortBy]);
+  });
+
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="category-page">
@@ -51,7 +74,7 @@ const DeskNamePlates = () => {
         ))}
       </div>
       
-      {sortedProducts.length === 0 && (
+      {sortedProducts.length === 0 && !loading && (
         <div className="no-products">
           <p>No products found in this category.</p>
         </div>

@@ -23,6 +23,7 @@ import Wishlist from './pages/Wishlist';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './App.css';
+import Products from './pages/Products';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/products" element={<Products />} />
               </Routes>
               <Footer />
             </div>
