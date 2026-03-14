@@ -1,9 +1,10 @@
-/* Header Styles */
+
+/* ========== PERFECT HEADER STYLES ========== */
 #header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 80px 5px 0px;
+  padding: 0;
   background: #000000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   z-index: 999;
@@ -11,21 +12,23 @@
   top: 0;
   left: 0;
   border-bottom: 1px solid #333;
+  width: 100%;
+  height: 90px;  /* Perfect header height */
 }
 
-/* Logo - INCREASED SIZE */
+/* Logo - With left space */
 .logo {
-  height: 240px;  /* Increased from 200px */
-  width: auto;
-  max-width: 650px;  /* Increased from 550px */
-  object-fit: contain;
-  background: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
-  border: 1px solid #444;
-  margin-left: 0;
-  margin-right: 8px;
+  height: 70px !important;
+  width: auto !important;
+  max-width: 220px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 40px 0 30px !important;
+  display: block !important;
 }
 
 /* Navbar */
@@ -35,94 +38,119 @@
   justify-content: flex-end;
   list-style: none;
   margin: 0;
-  padding: 0;
-  gap: 25px;
+  padding: 0 40px 0 0;
+  gap: 30px;
+  flex: 1;
+  height: 100%;
 }
 
 #navbar li {
   position: relative;
   list-style: none;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 #navbar li a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #ffffff;
   transition: color 0.3s;
-  padding: 10px 0;
+  padding: 0;
   white-space: nowrap;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  letter-spacing: 0.3px;
 }
 
-#navbar li a:hover {
+#navbar li a:hover,
+#navbar li a.active {
   color: #088178;
 }
 
-/* ========== ACCOUNT BUTTON - BLACK TEXT ========== */
+#navbar li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #088178;
+  border-radius: 2px;
+}
+
+/* ========== ACCOUNT BUTTON - PERFECT STYLE ========== */
 .account-btn {
-  background: none;
+  background: #088178 !important;  /* Green background */
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  color: #000000;  /* BLACK text */
+  color: #ffffff !important;  /* White text */
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 0;
+  padding: 8px 18px !important;  /* Perfect padding */
   position: relative;
   white-space: nowrap;
+  height: auto;
+  border-radius: 30px !important;  /* Rounded corners */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(8, 129, 120, 0.3);
 }
 
 .account-btn:hover {
-  color: #088178;
+  background: #0a9b8f !important;  /* Lighter green on hover */
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(8, 129, 120, 0.4);
 }
 
-/* Account icon */
 .account-icon {
-  color: #088178;
-  font-size: 18px;
+  color: #ffffff !important;
+  font-size: 16px;
 }
 
-/* Account text - BLACK */
 .account-text {
-  color: #000000;  /* Pure black */
+  color: #ffffff !important;
   font-weight: 500;
+  background: transparent;
+  padding: 0;
 }
 
-/* Underline effect */
+/* Remove underline effect for account button */
 .account-btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: #088178;
-  transition: width 0.3s ease;
+  display: none;
 }
 
-.account-btn:hover::after {
-  width: 100%;
+/* Dropdown Menu */
+.dropdown-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-/* Dropdown Menu - White */
 .dropdown-menu {
   position: absolute;
-  top: 55px;
+  top: 100%;
   right: 0;
-  width: 250px;
+  width: 260px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   padding: 12px 0;
   border: 1px solid #e0e0e0;
   z-index: 1000;
+  margin-top: 10px;
 }
 
 .dropdown-item {
-  padding: 14px 22px;
+  padding: 12px 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -130,6 +158,7 @@
   color: #1e293b;
   font-size: 15px;
   background: white;
+  transition: all 0.2s ease;
 }
 
 .dropdown-item:hover {
@@ -139,6 +168,7 @@
 
 .dropdown-icon {
   color: #088178;
+  font-size: 16px;
 }
 
 .dropdown-divider {
@@ -147,108 +177,168 @@
   margin: 8px 0;
 }
 
+.dropdown-badge {
+  background: #088178;
+  color: white;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
 /* Cart Icon */
 .cart-icon {
-  font-size: 24px;
+  font-size: 22px;
   color: #ffffff;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+  transition: color 0.3s;
+}
+
+.cart-icon:hover {
+  color: #088178;
 }
 
 .cart-count {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 12px;
+  right: -12px;
   background: #088178;
   color: white;
-  font-size: 12px;
-  min-width: 22px;
-  height: 22px;
-  border-radius: 11px;
+  font-size: 11px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid #000;
+  font-weight: bold;
 }
 
 /* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
-  font-size: 28px;
+  font-size: 26px;
   color: #ffffff;
   cursor: pointer;
+  padding: 0 25px 0 0;
+  height: 100%;
+  align-items: center;
+  transition: color 0.3s;
 }
 
-/* ========== MOBILE RESPONSIVE FIXES - INCREASED LOGO SIZES ========== */
+.mobile-menu-btn:hover {
+  color: #088178;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 1200px) {
   #header {
-    padding: 5px 60px 5px 0px;
+    height: 85px;
   }
   .logo {
-    height: 210px;  /* Increased from 180px */
-    max-width: 580px;  /* Increased from 500px */
+    height: 65px !important;
+    max-width: 200px !important;
+    margin: 0 35px 0 25px !important;
   }
   #navbar {
-    gap: 20px;
+    gap: 25px;
+    padding: 0 35px 0 0;
   }
-  #navbar li a, .account-btn {
-    font-size: 17px;
+  #navbar li a {
+    font-size: 15px;
+  }
+  .account-btn {
+    font-size: 15px;
+    padding: 7px 16px !important;
   }
 }
 
 @media (max-width: 1024px) {
   #header {
-    padding: 5px 40px 5px 0px;
+    height: 80px;
   }
   .logo {
-    height: 190px;  /* Increased from 160px */
-    max-width: 520px;  /* Increased from 450px */
+    height: 60px !important;
+    max-width: 180px !important;
+    margin: 0 30px 0 20px !important;
   }
   #navbar {
-    gap: 15px;
+    gap: 22px;
+    padding: 0 30px 0 0;
   }
-  #navbar li a, .account-btn {
-    font-size: 16px;
+  #navbar li a {
+    font-size: 15px;
+  }
+  .account-btn {
+    font-size: 15px;
+    padding: 7px 15px !important;
   }
 }
 
 @media (max-width: 899px) {
+  #header {
+    height: 75px;
+  }
   .logo {
-    height: 170px;  /* Increased from 150px */
-    max-width: 460px;  /* Increased from 400px */
+    height: 55px !important;
+    max-width: 160px !important;
+    margin: 0 25px 0 18px !important;
   }
   #navbar {
-    gap: 12px;
+    gap: 20px;
+  }
+  #navbar li a {
+    font-size: 14px;
+  }
+  .account-btn {
+    font-size: 14px;
+    padding: 6px 14px !important;
   }
 }
 
 @media (max-width: 799px) {
   #header {
-    padding: 5px 20px 5px 0px;
+    height: 70px;
+    padding: 0;
+    position: relative;
   }
   
   .logo {
-    height: 160px;  /* Increased from 140px */
-    max-width: 420px;  /* Increased from 380px */
+    height: 50px !important;
+    max-width: 140px !important;
+    margin: 0 20px 0 15px !important;
   }
   
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
   }
   
-  /* Mobile Menu Styles */
+  /* Mobile Menu */
   #navbar {
     position: fixed;
     top: 0;
-    right: -320px;
+    right: -300px;
     width: 280px;
     height: 100vh;
     background: #111111;
     flex-direction: column;
+    justify-content: flex-start;
     padding: 100px 25px;
-    gap: 25px;
+    gap: 5px;
     transition: right 0.3s ease;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    display: flex;
   }
   
   #navbar.active {
@@ -257,93 +347,140 @@
   
   #navbar li {
     width: 100%;
+    height: auto;
+    margin: 5px 0;
   }
   
   #navbar li a {
     width: 100%;
-    padding: 15px 0;
-    font-size: 18px;
+    padding: 12px 0;
+    font-size: 17px;
     color: #ffffff;
     text-align: left;
+    border-bottom: 1px solid #333;
+    height: auto;
+  }
+  
+  #navbar li a.active::after {
+    bottom: 8px;
   }
   
   /* Account button in mobile */
-  .account-btn {
+  .dropdown-container {
     width: 100%;
-    padding: 15px 0;
-    font-size: 18px;
-    color: #000000;  /* Black in mobile too */
-    justify-content: flex-start;
-    background: white;  /* White background for visibility */
-    border-radius: 8px;
-    padding: 12px 15px;
+    height: auto;
     margin: 5px 0;
   }
   
-  .account-text {
-    color: #000000;  /* Black text */
-  }
-  
-  .dropdown-container {
+  .account-btn {
     width: 100%;
+    font-size: 17px;
+    color: #ffffff !important;
+    justify-content: flex-start;
+    background: #088178 !important;
+    padding: 12px 15px !important;
+    border-radius: 8px !important;
+    height: auto;
+    border: none;
   }
   
+  .account-btn:hover {
+    background: #0a9b8f !important;
+  }
+  
+  /* Dropdown in mobile */
   .dropdown-menu {
     position: static;
     width: 100%;
     margin-top: 10px;
-    box-shadow: none;
-    border: 1px solid #333;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 8px;
   }
   
+  .dropdown-item {
+    background: #222;
+    color: #fff;
+    border-bottom: 1px solid #444;
+  }
+  
+  .dropdown-item:hover {
+    background: #333;
+    color: #088178;
+  }
+  
+  .dropdown-icon {
+    color: #088178;
+  }
+  
+  /* Cart icon in mobile */
   .cart-icon {
-    padding: 15px 0;
-    color: #ffffff;
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #333;
+    height: auto;
+    font-size: 20px;
+  }
+  
+  .cart-count {
+    top: 5px;
+    right: 0;
   }
 }
 
 @media (max-width: 577px) {
+  #header {
+    height: 65px;
+  }
   .logo {
-    height: 150px;  /* Increased from 130px */
-    max-width: 390px;  /* Increased from 340px */
+    height: 45px !important;
+    max-width: 130px !important;
+    margin: 0 15px 0 12px !important;
+  }
+  #navbar {
+    width: 260px;
+    right: -260px;
   }
 }
 
 @media (max-width: 477px) {
   #header {
-    padding: 5px 15px 5px 0px;
+    height: 60px;
   }
   
   .logo {
-    height: 140px;  /* Increased from 120px */
-    max-width: 350px;  /* Increased from 300px */
-    padding: 2px 4px;
+    height: 40px !important;
+    max-width: 120px !important;
+    margin: 0 12px 0 10px !important;
   }
   
-  #navbar {
-    width: 260px;
-    right: -260px;
-    padding: 90px 20px;
-  }
-  
-  #navbar li a {
-    font-size: 17px;
-  }
-  
-  .account-btn {
-    font-size: 17px;
-    padding: 10px 12px;
-  }
-}
-
-@media (max-width: 375px) {
-  .logo {
-    height: 120px;  /* Increased from 100px */
-    max-width: 300px;  /* Increased from 260px */
+  .mobile-menu-btn {
+    right: 12px;
+    font-size: 24px;
   }
   
   #navbar {
     width: 240px;
     right: -240px;
+    padding: 80px 20px;
+  }
+  
+  #navbar li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  #header {
+    height: 55px;
+  }
+  .logo {
+    height: 35px !important;
+    max-width: 110px !important;
+    margin: 0 10px 0 8px !important;
+  }
+  #navbar {
+    width: 220px;
+    right: -220px;
   }
 }

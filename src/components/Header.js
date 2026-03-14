@@ -102,7 +102,7 @@ const Header = () => {
   };
 
   return (
-    <section id="header">
+    <header id="header">  {/* Changed from section to header */}
       <Link to="/" onClick={closeMenu}>
         <img src="/images/afs1.jpeg" className="logo" alt="AFS" />
       </Link>
@@ -134,7 +134,8 @@ const Header = () => {
         {/* Account Dropdown */}
         <li className="dropdown-container" ref={dropdownRef}>
           <button className="account-btn" onClick={toggleDropdown}>
-            <FaUser /> Account
+            <FaUser className="account-icon" />
+            <span className="account-text">Account</span>
           </button>
           
           <AnimatePresence>
@@ -192,7 +193,7 @@ const Header = () => {
                     
                     <div className="dropdown-divider"></div>
                     
-                    <div className="dropdown-item logout" onClick={handleLogout}>
+                    <div className="dropdown-item" onClick={handleLogout}>
                       <FaSignOutAlt className="dropdown-icon" />
                       <span>Logout</span>
                     </div>
@@ -213,7 +214,7 @@ const Header = () => {
           </NavLink>
         </li>
       </ul>
-    </section>
+    </header>
   );
 };
 
